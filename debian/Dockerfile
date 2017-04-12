@@ -13,6 +13,6 @@ RUN apt-get update -qq && DEBIAN_FRONTEND=noninteractive apt-get install -yqq\
     wget\
     curl &&\
     rm -rf /var/lib/apt/lists/* &&\
-    echo "Europe/Berlin" > /etc/timezone &&\
+    echo "America/New_York" > /etc/timezone &&\
     dpkg-reconfigure -f noninteractive tzdata &&\
     echo 'alias ll="ls -lah --color=auto"' >> /etc/bash.bashrc

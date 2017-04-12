@@ -11,18 +11,22 @@ ENV APACHE_LOG_DIR   /var/log/apache2
 ENV APACHE_USER_UID 0
 
 # PHP && Apache
-RUN apt-get update -qq && DEBIAN_FRONTEND=noninteractive apt-get -yqq install --no-install-recommends\
-    php5\
-    php5-curl\
-    php5-gd\
-    php-apc\
-    php5-imagick\
-    imagemagick\
-    apache2-mpm-prefork\
-    apache2-utils\
-    libapache2-mod-php5 &&\
-    rm -rf /var/lib/apt/lists/* &&\
-    a2enmod rewrite &&\
+RUN apt-get update -qq && DEBIAN_FRONTEND=noninteractive apt-get -yqq install --no-install-recommends \
+    php5 \
+    php5-cli \
+    php5-curl \
+    php5-fpm \
+    php5-gd \
+    php5-json \
+    php5-mysql \
+    #php5-readline \
+    php-apc \
+    apache2-mpm-prefork \
+    apache2-utils \
+    libapache2-mod-php5 && \
+    rm -rf /var/lib/apt/lists/* && \
+    a2enmod rewrite && \
+    a2enmod headers && \
     echo "ServerName localhost" | tee /etc/apache2/conf.d/fqdn
 
 # Config files.
